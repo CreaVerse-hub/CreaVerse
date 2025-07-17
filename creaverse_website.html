@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreaVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0d0d1a;
+      color: white;
+    }
+    header {
+      background-color: #001f3f;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1 {
+      color: #ffd700;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .barre-de-recherche {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .barre-de-recherche input {
+      padding: 0.5rem;
+      width: 300px;
+      border-radius: 5px;
+      border: none;
+    }
+    .gallery-manga {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .gallery-manga::-webkit-scrollbar {
+      display: none;
+    }
+    .gallery-disney {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .gallery-disney::-webkit-scrollbar {
+      display: none;
+    }
+    .card {
+      background-color: #1a1a2e;
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 200px;
+      max-width: 200px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffd90080;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffd700aa;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .card h3 {
+      margin: 0.5rem 0 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #001f3f;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CreaVerse</h1>
+    <p>Là où les passions deviennent créations</p>
+  </header>
+
+  <div class="barre-de-recherche">
+    <input type="text" placeholder="Rechercher une catégorie (dessin, figurine, etc.)">
+    <input type="text" placeholder="Rechercher un univers (One Piece, Marvel, etc.)">
+  </div>
+
+  <section class="gallery-manga">
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 1">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 2">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 3">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 4">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 5">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 6">
+      <h3>Nom de la création</h3>
+    </div>
+  </section>
+  <section class="gallery-disney">
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 1">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 2">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 3">
+      <h3>Nom de la création</h3>
+    </div>
+    <!-- Plus de créations à ajouter dynamiquement -->
+  </section>
+
+  <footer>
+    &copy; 2025 CreaVerse. Tous droits réservés.
+  </footer>
+</body>
+</html>
