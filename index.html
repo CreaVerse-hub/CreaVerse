@@ -34,22 +34,15 @@
       border-radius: 5px;
       border: none;
     }
-    .gallery-manga {
+    .gallery-manga, .gallery-disney, .gallery-ghibli {
       display: flex;
       overflow-x: auto;
       gap: 1rem;
       padding: 1rem;
     }
-    .gallery-manga::-webkit-scrollbar {
-      display: none;
-    }
-    .gallery-disney {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem;
-    }
-    .gallery-disney::-webkit-scrollbar {
+    .gallery-manga::-webkit-scrollbar,
+    .gallery-disney::-webkit-scrollbar,
+    .gallery-ghibli::-webkit-scrollbar {
       display: none;
     }
     .card {
@@ -72,6 +65,51 @@
     }
     .card h3 {
       margin: 0.5rem 0 0;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background-color: #1a1a2e;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffd90080;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #ffd700;
+      color: black;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #confirmation {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #28a745;
+      color: white;
+      padding: 1.2rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #28a745aa;
+      z-index: 9999;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .acompte-info {
+      text-align: center;
+      font-size: 1rem;
+      color: #ffd700;
+      margin-bottom: 1.5rem;
     }
     footer {
       text-align: center;
@@ -118,6 +156,7 @@
       <h3>Nom de la création</h3>
     </div>
   </section>
+
   <section class="gallery-disney">
     <div class="card">
       <img src="https://via.placeholder.com/200" alt="Création 1">
@@ -131,11 +170,113 @@
       <img src="https://via.placeholder.com/200" alt="Création 3">
       <h3>Nom de la création</h3>
     </div>
-    <!-- Plus de créations à ajouter dynamiquement -->
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 4">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 5">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 6">
+      <h3>Nom de la création</h3>
+    </div>
   </section>
+
+  <section class="gallery-ghibli">
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 1">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 2">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 3">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 4">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 5">
+      <h3>Nom de la création</h3>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200" alt="Création 6">
+      <h3>Nom de la création</h3>
+    </div>
+  </section>
+
+  <form id="creaForm">
+    <div class="acompte-info">
+      ⚠️ Avant de finaliser votre commande, veuillez noter qu'un acompte vous sera demandé par e-mail. Cela permet d'établir un premier contact sérieux et rassurant.
+    </div>
+    <label for="nom">Nom complet</label><br>
+    <input type="text" name="nom" id="nom" required><br>
+
+    <label for="email">Adresse e-mail</label><br>
+    <input type="email" name="email" id="email" required><br>
+
+    <label for="type">Type de création souhaitée</label><br>
+    <input type="text" name="type" id="type"><br>
+
+    <label for="univers">Univers (ex: Naruto, Disney, etc.)</label><br>
+    <input type="text" name="univers" id="univers"><br>
+
+    <label for="prix">Prix (en €)</label><br>
+    <input type="text" name="prix" id="prix"><br>
+
+    <label for="taille">Taille (cm)</label><br>
+    <input type="text" name="taille" id="taille"><br>
+
+    <label for="details">Détails de la commande</label><br>
+    <textarea name="details" id="details" rows="5"></textarea><br>
+
+    <button type="submit">Envoyer ma demande</button>
+  </form>
+
+  <!-- POP-UP DE CONFIRMATION -->
+  <div id="confirmation">
+    ✔️ Demande envoyée avec succès !
+  </div>
 
   <footer>
     &copy; 2025 CreaVerse. Tous droits réservés.
   </footer>
+
+  <script>
+    const form = document.getElementById("creaForm");
+    const confirmation = document.getElementById("confirmation");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch("https://formspree.io/f/xvgqzgeo", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          confirmation.style.display = "block";
+          setTimeout(() => {
+            confirmation.style.display = "none";
+          }, 2500);
+          form.reset();
+        } else {
+          alert("Une erreur est survenue. Merci de réessayer.");
+        }
+      }).catch(error => {
+        alert("Erreur réseau. Vérifie ta connexion.");
+      });
+    });
+  </script>
 </body>
 </html>
